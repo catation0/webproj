@@ -17,7 +17,8 @@ Check time:
 // -- Definitions --
 clockE = document.getElementsByTagName('h1')[0]
 textSizeE = document.getElementsByTagName('select')[0]
-
+timezoneE = document.getElementsByTagName('select')[1]
+timezone = 0
 
 // -- Functions --
 function initialize() {
@@ -28,7 +29,7 @@ function initialize() {
 function returnTime() {
 	var time = new Date()
 
-	hh = time.getHours()
+	hh = time.getHours() + timezone
 	mm = time.getMinutes()
 	ss = time.getSeconds()
 }
@@ -41,6 +42,8 @@ function formatTime(num) {
 function checkTime() {
 	returnTime()
 	if (3600*hh+60*mm+ss != savedTime) {
+		if (hh>=24) {hh-=24}
+		if (hh<=-1) {hh+=24}
 		clockE.innerHTML = formatTime(hh)+':'+formatTime(mm)+':'+formatTime(ss)
 		savedTime = 3600*hh+60*mm+ss
 	}
@@ -48,8 +51,10 @@ function checkTime() {
 
 function change(opt) {
 	if (opt == 1) {clockE.style.fontSize = textSizeE.value}
+	if (opt == 2) {timezone = Number(timezoneE.value)}
 }
 
+// -- Setup --
 initialize()
 
 setInterval(checkTime, 20)
