@@ -16,6 +16,8 @@ Check time:
 
 // -- Definitions --
 clockE = document.getElementsByTagName('h1')[0]
+textSizeE = document.getElementsByTagName('select')[0]
+
 
 // -- Functions --
 function initialize() {
@@ -26,7 +28,7 @@ function initialize() {
 function returnTime() {
 	var time = new Date()
 
-	hh = time.getHours()+3
+	hh = time.getHours()
 	mm = time.getMinutes()
 	ss = time.getSeconds()
 }
@@ -44,7 +46,10 @@ function checkTime() {
 	}
 }
 
-initialize()
+function change(opt) {
+	if (opt == 1) {clockE.style.fontSize = textSizeE.value}
+}
 
+initialize()
 
 setInterval(checkTime, 20)
