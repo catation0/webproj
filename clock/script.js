@@ -51,10 +51,9 @@ function checkTime() {
 
 function change(opt) {
 	if (opt == 1) {clockE.style.fontSize = textSizeE.value}
-	if (opt == 2) {timezone = Number(timezoneE.value)}
+	if (opt == 2) {timezone = timezoneE.value*1}
 }
 
-// -- Setup --
 initialize()
 
 setInterval(checkTime, 20)
