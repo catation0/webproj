@@ -26,7 +26,7 @@ function initialize() {
 function returnTime() {
 	var time = new Date()
 
-	hh = time.getHours()
+	hh = time.getHours()+3
 	mm = time.getMinutes()
 	ss = time.getSeconds()
 }
@@ -45,5 +45,6 @@ function checkTime() {
 }
 
 initialize()
+
 
 setInterval(checkTime, 20)
